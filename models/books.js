@@ -8,7 +8,8 @@ const Books = new Schema({
     author: {type: String},
     publication: {type:String},
     language:{type: String,
-                enum:["Hindi","English"]}
+                enum:["Hindi","English"]},
+    lastIssueDate:{type: String}
 
 });
 
