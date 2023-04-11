@@ -37,6 +37,11 @@ exports.student_create_post = [
     .isLength({min: 1})
     .escape()
     .withMessage("Contact Number must be specified"),
+    body("address")
+    .trim()
+    .isLength({min: 1})
+    .escape()
+    .withMessage("Address must be specified"),
     body("class")
     .trim()
     .isLength({min: 1})
@@ -56,6 +61,7 @@ exports.student_create_post = [
             name: req.body.name,
             fathers_name: req.body.fathers_name,
             contact_no: req.body.contact_no,
+            address: req.body.address,
             class: req.body.class,
             gender: req.body.gender,
         });
