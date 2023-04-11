@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if error
+    p Error getting dynamic content.
+  else
+    //- p The library has the following record counts:
+
+    //- ul
+    //-   li #[strong Books:] !{data.book_count}
+    //-   li #[strong Students:] !{data.student_count}
+    
+    h2= "Issue Book" 
+
+    form(action='' method='POST')
+      div.form-group 
+        label(for='studentId') Student ID:  
+        input#title.form-control(type=text, value= studentId placeholder = studentId name='studentId' required=true )
+      
+      button.btn.btn-primary(type='submit' name='action' value='student details') Show Details 
+      div.form-group 
+        label(for='name') Name:  
+        input#title.form-control(type=text name='name' value=studentName placeholder= studentName )
+        if(studentBooks)
+            ul
+              p Books issued:
+              each book in studentBooks
+                div.form-group
+                  label(for="bookId") (#{book.id}) #{book.name}
+                  input(type="checkbox" id=book.id  name='books' value=book._id)
+              else 
+                li No books issued 
+            button(type="submit" name='action' value='book return') Return Selected Books
+        form(action='' method='POST')        
+          div.form-group 
+            label(for='bookId') Book ID:  
+            input#title.form-control(type=text, placeholder ='ID of Book' name='bookId')
+
+        button.btn.btn-primary(type='submit' name ='action' value='book issue') Issue book

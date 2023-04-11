@@ -1,0 +1,14 @@
+extends layout 
+//not req
+block content 
+    h1=title 
+
+    form(method='POST' action='')
+        div.form-group
+            label(for='id') ID: 
+            input#title.form-control(type=text, placeholder ='ID of Book' name='id' required=true )
+        div.form-group
+            label(for='name') Name: 
+            input#title.form-control(type=text, placeholder ='Name of Book' name='name' required=true )
+    
+        button.btn.btn-primary(type='submit') Submit
