@@ -7,7 +7,6 @@ const issue_controller = require("../controllers/issueController");
 
 router.get("/",issue_controller.index);
 router.post("/", issue_controller.issue_book_post);
-router.post("/return",issue_controller.return_book_post);
 
 router.get("/book/create",book_controller.book_create_get);
 router.post("/book/create",book_controller.book_create_post);

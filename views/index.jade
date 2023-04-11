@@ -29,8 +29,8 @@ block content
               p Books issued:
               each book in studentBooks
                 div.form-group
-                  label(for="bookId") (#{book.id}) #{book.name}
                   input(type="checkbox" id=book.id  name='books' value=book._id)
+                  label(for="bookId") (#{book.id}) #{book.name}  #{book.lastIssueDate}
               else 
                 li No books issued 
             button(type="submit" name='action' value='book return') Return Selected Books

@@ -43,6 +43,9 @@ exports.issue_book_post =async(req,res,next)=>{
             await Student.updateOne({id:studentId},{
                 $push:{issued_books: results.bookId}
             });
+            await Book.updateOne({_id:results.bookId},{
+                lastIssueDate: new Date().toLocaleDateString('en-IN')
+            })
             const issue = new Issue({
                 studentId: results.studentId,
                 bookId: results.bookId,
@@ -77,10 +80,10 @@ exports.issue_book_post =async(req,res,next)=>{
         
     }
     else if(action==='book return'){
-        console.log(req.body);
-         Student.updateOne({id:req.body.studentId},{
+        if(!Array.isArray(req.body.books)){
+            Student.updateOne({id:req.body.studentId},{
             $pullAll:{
-                issued_books: req.body.books
+                issued_books: [req.body.books]
             }
         }).exec(function(err){
             if(err){
@@ -89,25 +92,21 @@ exports.issue_book_post =async(req,res,next)=>{
             res.redirect('/');
         });
     }
+        else{
+            Student.updateOne({id:req.body.studentId},{
+                $pullAll:{
+                    issued_books: req.body.books
+                }
+            }).exec(function(err){
+                if(err){
+                    return next(err);
+                }
+                res.redirect('/');
+            });
+        }
+    }
 }
 
-exports.get_details= (req,res)=>{
-    Student.find({id: req.studentId},"name class")
-        .exec(function(err, studentData){
-            if(err){
-                return next(err);
-            }
-            res.render("index",{title:"Home",studentData: studentData});
-        })
-};
 
 
-exports.return_book_post= async (req,res,next)=>{
-    await Student.updateOne({id:req.body.studentId},{
-        $pullAll:{
-            id: req.body.books
-        }
-    });
 
-    console.log(req.body);
-};
