@@ -27,7 +27,26 @@ exports.student_create_post = [
     .isLength({min: 1})
     .escape()
     .withMessage("ID must be specified"),
-
+    body("fathers_name")
+    .trim()
+    .isLength({min: 1})
+    .escape()
+    .withMessage("Father's Name must be specified"),
+    body("contact_no")
+    .trim()
+    .isLength({min: 1})
+    .escape()
+    .withMessage("Contact Number must be specified"),
+    body("class")
+    .trim()
+    .isLength({min: 1})
+    .escape()
+    .withMessage("Class must be specified"),
+    body("gender")
+    .trim()
+    .isLength({min: 1})
+    .escape()
+    .withMessage("Gender must be specified"),
     (req,res,next) => {
         const errors = validationResult(req);
 
