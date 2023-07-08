@@ -7,10 +7,17 @@ block content
         div.form-group
             label(for='id') ID: 
             input#title.form-control(type=text, placeholder ='ID of Book' name='id' required=true )
-        div.form-group
             label(for='name') Name: 
             input#title.form-control(type=text, placeholder ='Name of Book' name='name' required=true )
-    
+            label(for='author') Author: 
+            input#title.form-control(type=text, placeholder ='Author of Book' name='author'  )
+            label(for='publication') Publication: 
+            input#title.form-control(type=text, placeholder ='Publication of Book' name='publication'  )
+            label(for='language') Language: 
+            select#id.form-control(name='language')
+                option(value="null") Select Language
+                option(value="English") English 
+                option(value="Hindi") Hindi
         button.btn.btn-primary(type='submit') Submit
 if errors 
     ul 

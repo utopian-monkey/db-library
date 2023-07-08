@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const catalogRouter =require("./routes/catalog");
 
 const compression = require("compression");
@@ -17,6 +16,8 @@ const mongoose = require("mongoose");
 mongoose.set('strictQuery', false);
 const dotenv= require('dotenv').config();
 const mongoDB = process.env.MONGO_URI;
+
+app.use(express.static('assets'));
 
 main().catch(err => console.log(err));
 async function main() {
@@ -37,7 +38,6 @@ app.use(compression());
 app.use(helmet());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use("/catalog",catalogRouter);
 
 // catch 404 and forward to error handler
