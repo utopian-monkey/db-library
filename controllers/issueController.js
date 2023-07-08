@@ -15,7 +15,7 @@ exports.index = (req,res) =>{
         },
         (err,results)=> {
             res.render("index",{
-                title: "Home",
+                title: "DAYALBAGH CHILDREN'S LIBRARY",
                 error:err,
                 data: results,
             });
@@ -106,7 +106,3 @@ exports.issue_book_post =async(req,res,next)=>{
         }
     }
 }
-
-
-
-

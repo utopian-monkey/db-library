@@ -1,9 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
+  
   if error
     p Error getting dynamic content.
   else
@@ -13,7 +11,7 @@ block content
     //-   li #[strong Books:] !{data.book_count}
     //-   li #[strong Students:] !{data.student_count}
     
-    h2= "Issue Book" 
+    h1= "Issue Book" 
 
     form(action='' method='POST')
       div.form-group 
