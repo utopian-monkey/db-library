@@ -12,7 +12,7 @@ html(lang='en')
     body
     div(class='header')
           block header
-            h1(class='header-text') DAYALBAGH CHILDREN'S LIBRARY
+            h1(class='header-text') CHILDREN'S LIBRARY
             h4 Knowledge to Wisdom
     div(class='container-fluid')
       div(class='row')
@@ -21,15 +21,15 @@ html(lang='en')
              ul(class='sidebar-nav')
               h3 CONTENTS
               li
-                a(href='/catalog' class='sidebar-link') Home
+                a(href='/catalog' class=(activePage==='home'? 'active':'sidebar-link')) Home
               li
-                a(href='/catalog/books' class='sidebar-link') All books
+                a(href='/catalog/books' class=(activePage==='book_list'? 'active':'sidebar-link')) All books
               li
-                a(href='/catalog/students' class='sidebar-link') All students
+                a(href='/catalog/students' class=(activePage==='student_list'? 'active':'sidebar-link')) All students
               li
-                a(href='/catalog/student/create' class='sidebar-link') Create new student
+                a(href='/catalog/student/create' class=(activePage==='new_student'? 'active':'sidebar-link')) Create new student
               li
-                a(href='/catalog/book/create' class='sidebar-link') Create new book
+                a(href='/catalog/book/create' class=(activePage==='new_book'? 'active':'sidebar-link')) Create new book
 
         
         div(class='col-sm-10')
@@ -37,7 +37,7 @@ html(lang='en')
     div(class='footer')
       block footer
         p 
-          | Dayalbagh Children's Library 2023
+          | Children's Library, Dayalbagh
           br 
           | Yatri Sadan, Dayalbagh Agra 282005
         

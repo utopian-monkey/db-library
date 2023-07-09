@@ -1,7 +1,7 @@
 extends layout 
 
 block content 
-    h1=title 
+    h2=title 
 
     form(method='POST' action='')
         div.form-group
@@ -18,7 +18,7 @@ block content
             label(for='class') Class: 
             input#id.form-control(type='number' placeholder='Class of the student' min='1' max='10' name='class' required='true')
             label(for='gender') Gender: 
-            select#id.form-control(name='gender')
+            select#id.form-control(name='gender' required='true')
                 option(value="null") Select an option
                 option(value="girl") Girl 
                 option(value="boy") Boy

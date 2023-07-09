@@ -1,13 +1,13 @@
 extends layout 
 
 block content 
-    h1=title 
+    h2=title 
 
     form(method='POST' action='')
         div.form-group
-            label(for='id') ID: 
+            label(for='id') ID*: 
             input#title.form-control(type=text, placeholder ='ID of Book' name='id' required=true )
-            label(for='name') Name: 
+            label(for='name') Name*: 
             input#title.form-control(type=text, placeholder ='Name of Book' name='name' required=true )
             label(for='author') Author: 
             input#title.form-control(type=text, placeholder ='Author of Book' name='author'  )

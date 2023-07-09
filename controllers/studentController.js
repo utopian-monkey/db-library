@@ -9,12 +9,12 @@ exports.student_list = (req,res) => {
             if(err){
                 return next(err);
             }
-            res.render("student_list", {title: "Student List", student_list: list_students});
+            res.render("student_list", {title: "STUDENT LIST", student_list: list_students, activePage: "student_list"});
         })
 };
 
 exports.student_create_get = (req,res) => {
-    res.render("student_form",{title: "Add Student"});
+    res.render("student_form",{title: "ADD STUDENT",activePage: "new_student"});
 };
 exports.student_create_post = [
     body("name")
@@ -67,7 +67,8 @@ exports.student_create_post = [
         });
         if(!errors.isEmpty()){
             res.render("student_form",{
-                title:"Add Student",
+                title:"ADD STUDENT",
+                activePage: "new_student",
                 });
                 return;
         }
