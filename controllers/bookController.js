@@ -11,12 +11,13 @@ exports.book_list =(req,res)=>{
             if(err){
                 return next(err);
             }
-            res.render("book_list", {title: "Book List", book_list: list_books});
+            res.render("book_list", {title: "BOOK LIST", book_list: list_books, activePage: "book_list"});
         })
 };
 exports.book_create_get =(req,res)=>{
     res.render("book_form",{
-        title: "Add Book",
+        title: "ADD BOOK",
+        activePage: "new_book"
     });
 };
 exports.book_create_post =[
@@ -34,7 +35,8 @@ exports.book_create_post =[
 
         if(!errors.isEmpty()){
             res.render("book_form",{
-                title: "Add Book",
+                title: "ADD BOOK",
+                activePage: "new_book"
             });
             return;
         }

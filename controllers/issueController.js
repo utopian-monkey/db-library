@@ -18,6 +18,7 @@ exports.index = (req,res) =>{
                 title: "DAYALBAGH CHILDREN'S LIBRARY",
                 error:err,
                 data: results,
+                activePage: "home"
             });
         }
     );
@@ -27,7 +28,6 @@ exports.issue_book_post =async(req,res,next)=>{
     const action= req.body.action;
     const studentId = req.body.studentId;
     if(action==='book issue'){
-        //console.log(req.body);
         async.parallel({
             bookId(callback){
                 Book.findOne({id:req.body.bookId},"_id",callback);
@@ -74,7 +74,8 @@ exports.issue_book_post =async(req,res,next)=>{
                 studentId:  studentId,
                 studentName: studentData.name,
                 studentClass: studentData.class,
-                studentBooks: studentData.issued_books
+                studentBooks: studentData.issued_books,
+                activePage: "home"
             });
         });
         
